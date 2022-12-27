@@ -44,7 +44,7 @@
 
 &mt {
     tapping-term-ms = <400>;                  /* <--- How long a key is held to trigger the hold function (default: 200) */
-}
+};
 
 / {
     keymap {
