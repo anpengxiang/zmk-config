@@ -34,28 +34,26 @@
 #define SCROLL_LEFT SCROLL_HOR(-U_MOUSE_SCROLL_MAX)
 #define SCROLL_RIGHT SCROLL_HOR(U_MOUSE_SCROLL_MAX)
 
+&mmv {
+    time-to-max-speed-ms = <400>;             /* <--- How long time until max speed is reached (default: 500) */
+};
+    
+&mwh {
+    time-to-max-speed-ms = <500>;             /* <--- How long time until max speed is reached */
+};
 
+&mt {
+    flavor = "tap-preferred";
+};
 
 / {
     behaviors {
-            &mmv {
-                time-to-max-speed-ms = <400>;             /* <--- How long time until max speed is reached (default: 500) */
-            };
-                
-            &mwh {
-                time-to-max-speed-ms = <500>;             /* <--- How long time until max speed is reached */
-            };
-            
-            &mt {
-                flavor = "tap-preferred";
-            };
-
             td0: tap_dance_0 {
                 compatible = "zmk,behavior-tap-dance";
                 label = "TAP_DANCE_0";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
-                bindings = <&kp LALT>, <&none>, <&tog 3>;
+                bindings = <&kp LALT>, <&tog 3>;
             };
     };
 
