@@ -93,9 +93,9 @@
         // Layer 3
         one_hand_layer {
             bindings = <
-                &kp ESC             &kp LC(C)          &kp LC(V)         &kp LC(W)         &LC(D)                    &kp LC(C)       &kp LC(V)       &kp LC(LBKT)         &kp LC(RBKT)         &kp BSPC
-                &kp LC(PG_UP)       &mkp LCLK          &mmv MOVE_UP      &mkp RCLK         &mwh SCROLL_UP            &kp LEFT        &kp DOWN        &kp UP               &kp RIGHT            &none
-                &kp LC(PG_DN)       &mmv MOVE_LEFT     &mmv MOVE_DOWN    &mmv MOVE_RIGHT   &mwh SCROLL_DOWN          &kp EQUAL       &kp KP_PLUS     &kp KP_MINUS         &kp_MULTIPLY         &kp ENTER
+                &kp ESC             &kp LC(C)          &kp LC(V)         &kp LC(W)         &LC(D)                    &kp LC(C)       &kp LC(V)       &kp LC(LBKT)         &kp LC(RBKT)            &kp BSPC
+                &kp LC(PG_UP)       &mkp LCLK          &mmv MOVE_UP      &mkp RCLK         &mwh SCROLL_UP            &kp LEFT        &kp DOWN        &kp UP               &kp RIGHT               &none
+                &kp LC(PG_DN)       &mmv MOVE_LEFT     &mmv MOVE_DOWN    &mmv MOVE_RIGHT   &mwh SCROLL_DOWN          &kp EQUAL       &kp KP_PLUS     &kp KP_MINUS         &kp KP_MULTIPLY         &kp ENTER
                                                                          &to 0             &kp BSPC                  &kp LC(LSHFT)      &trans
                 >;
         };
