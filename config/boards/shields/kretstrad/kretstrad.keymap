@@ -61,7 +61,7 @@
     keymap {
         
         // Key location reference
-        //     0            1            2            3            4                        5            6            7            8            9        
+        //     0             1            2            3            4                        5            6            7            8            9        
         //    10            11           12           13           14                       15           16           17           18           19
         //    20            21           22           23           24                       25           26           27           28           29
         //                                            30           31                       32           33
@@ -100,9 +100,9 @@
         // Layer 3
         one_hand_layer {
             bindings = <
-                &kp ESC             &kp LC(C)          &kp LC(V)         &kp LC(W)         &kp LC(D)                    &kp LC(C)       &kp LC(V)       &kp LC(LBKT)         &kp LC(RBKT)            &kp BSPC
+                &kp ESC             &kp LC(C)          &kp LC(V)         &kp LC(W)         &kp LC(D)                 &kp LC(C)       &kp LC(V)       &kp LC(LBKT)         &kp LC(RBKT)            &kp BSPC
                 &kp LC(PG_UP)       &mkp LCLK          &mmv MOVE_UP      &mkp RCLK         &mwh SCROLL_UP            &kp LEFT        &kp DOWN        &kp UP               &kp RIGHT               &kp F2
-                &kp LC(PG_DN)       &mmv MOVE_LEFT     &mmv MOVE_DOWN    &mmv MOVE_RIGHT   &mwh SCROLL_DOWN          &kp EQUAL       &kp PLUS     &kp MINUS         &kp KP_MULTIPLY         &kp ENTER
+                &kp LC(PG_DN)       &mmv MOVE_LEFT     &mmv MOVE_DOWN    &mmv MOVE_RIGHT   &mwh SCROLL_DOWN          &kp EQUAL       &kp PLUS        &kp MINUS            &kp KP_MULTIPLY         &kp ENTER
                                                                          &to 0             &kp BSPC                  &kp LC(LSHFT)      &trans
                 >;
         };
