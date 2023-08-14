@@ -11,7 +11,7 @@
 
 // adjust mouse movement speed
 
-#define U_MOUSE_MOVE_MAX 1800                     /* <--- New max speed setting (default: 600) */
+#define U_MOUSE_MOVE_MAX 2000                     /* <--- New max speed setting (default: 600) */
 #undef MOVE_UP
 #undef MOVE_DOWN
 #undef MOVE_LEFT
@@ -23,7 +23,7 @@
 
 // adjust mouse scroll wheel speed
 
-#define U_MOUSE_SCROLL_MAX 50                    /* <--- New max speed setting (default: 10) */
+#define U_MOUSE_SCROLL_MAX 20                    /* <--- New max speed setting (default: 10) */
 
 #undef SCROLL_UP
 #undef SCROLL_DOWN
@@ -39,7 +39,7 @@
 };
     
 &mwh {
-    time-to-max-speed-ms = <2000>;             /* <--- How long time until max speed is reached */
+    time-to-max-speed-ms = <500>;             /* <--- How long time until max speed is reached */
 };
 
 &mt {
