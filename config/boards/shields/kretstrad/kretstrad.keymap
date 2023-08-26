@@ -117,5 +117,29 @@
             layers = <3>;
             bindings = <&kp KP_DIVIDE>;
         };
+
+        combo_middle_click {
+            timeout-ms = <50>;
+            key-positions = <11 13>;
+            layers = <3>;
+            bindings = <&kp MCLK>;
+        };
+
+        combo_scroll_left {
+            timeout-ms = <50>;
+            key-positions = <10 20>;
+            layers = <3>;
+            bindings = <&kp SCROLL_LEFT>;
+        };
+
+        combo_scroll_right {
+            timeout-ms = <50>;
+            key-positions = <14 24>;
+            layers = <3>;
+            bindings = <&kp SCROLL_RIGHT>;
+        };
+
+
+
     };
 };
