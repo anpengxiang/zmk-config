@@ -90,10 +90,10 @@
         // Layer 2
         nav_sys_layer {
             bindings = <
-                &kp F1        &kp F2     &kp F3     &kp F4       &kp F5                     &kp F6          &kp F7         &kp F8         &kp F9         &kp F10
-                &kp DEL       &none      &none      &kp HOME     &kp END                    &none           &kp TILDE      &kp LBKT       &kp RBKT       &kp BSLH
-                &kp CAPS      &none      &none      &none        &none                      &bt BT_SEL 0    &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_CLR
-                                                    &trans       &trans                     &trans          &trans
+                &kp F1        &kp F2              &kp F3            &kp F4       &kp F5                     &kp F6          &kp F7         &kp F8         &kp F9         &kp F10
+                &kp DEL       &sheet_prepare      &freeze_pane      &kp HOME     &kp END                    &none           &kp TILDE      &kp LBKT       &kp RBKT       &kp BSLH
+                &kp CAPS      &inc_dec            &red_dec          &none        &none                      &bt BT_SEL 0    &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_CLR
+                                                                    &trans       &trans                     &trans          &trans
                 >;
         };
         
@@ -122,24 +122,72 @@
             timeout-ms = <50>;
             key-positions = <11 13>;
             layers = <3>;
-            bindings = <&kp MCLK>;
+            bindings = <&mkp MCLK>;
         };
 
         combo_scroll_left {
             timeout-ms = <50>;
             key-positions = <10 20>;
             layers = <3>;
-            bindings = <&kp SCROLL_LEFT>;
+            bindings = <&mwh SCROLL_LEFT>;
         };
 
         combo_scroll_right {
             timeout-ms = <50>;
             key-positions = <14 24>;
             layers = <3>;
-            bindings = <&kp SCROLL_RIGHT>;
+            bindings = <&mwh SCROLL_RIGHT>;
+        };
+    };
+
+    macros {
+        // EXCEL: prepare formatting of the sheet with favorite font, gridline and font size
+        sheet_prepare: sheet_prepare {
+            label = "ZM_freeze_pane";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <40>;
+            bindings 
+                // select whole sheet
+                = <&kp LC(A)>
+                // font selection
+                , <&kp LALT &kp H &kp F &kp F &kp A &kp R &kp I &kp A &kp L &kp SPACE &kp N &kp A &kp R &kp R &kp O &kp W &kp ENTER>
+                // remove gridline
+                , <&kp LALT &kp W &kp V &kp G>
+                // font size
+                , <&kp LALT &kp H &kp F &kp S &kp N1 &kp N1 &kp ENTER>
+                ;
         };
 
+        // EXCEL: select the cell and choose place to turn on freeze pane, activate again to remove freeze pane
+        freeze_pane: freeze_pane {
+            label = "ZM_freeze_pane";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <40>;
+            bindings = <&kp LALT &kp W &kp F &kp F>;
+        };
 
+        // EXCEL: increase decimal points
+        inc_dec: inc_dec {
+            label = "ZM_inc_dec";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <40>;
+            bindings = <&kp LALT &kp H &kp N0>;
+        };
 
+        // EXCEL: reduce decimal points
+        red_dec: red_dec {
+            label = "ZM_red_dec";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <40>;
+            bindings = <&kp LALT &kp H &kp N9>;
+        };
     };
-};
+}; 
