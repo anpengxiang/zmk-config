@@ -143,11 +143,11 @@
     macros {
         // EXCEL: prepare formatting of the sheet with favorite font, gridline and font size
         sheet_prepare: sheet_prepare {
-            label = "ZM_freeze_pane";
+            label = "ZM_sheet_prepare";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <30>;
-            tap-ms = <40>;
+            wait-ms = <50>;
+            tap-ms = <50>;
             bindings 
                 // select whole sheet
                 = <&kp LC(A)>
