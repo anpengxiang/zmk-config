@@ -68,6 +68,7 @@
 
         compatible = "zmk,keymap";
         // Layer 0
+        // quite optimised: to work on a decicated gaming layer <trigger through combo> 
         default_layer {
             bindings = <
                 &kp Q               &kp W      &kp E      &kp R      &kp T               &kp Y      &kp U         &kp I         &kp O           &kp P
@@ -78,6 +79,7 @@
         };
 
         // Layer 1
+        // quite optimised
         num_punc_layer {
             bindings = <
                 &kp N1     &kp N2     &kp N3     &kp N4          &kp N5                     &kp N6          &kp N7          &kp N8        &kp N9           &kp N0
@@ -88,6 +90,9 @@
         };
         
         // Layer 2
+        // add most often used macros in excel: format painter, 
+        // wishlist excel function: trace precedent, trace dependent, remove arrow
+        
         nav_sys_layer {
             bindings = <
                 &kp F1        &kp F2              &kp F3            &kp F4                  &kp F5                     &kp F6          &kp F7         &kp F8         &kp F9         &kp F10
@@ -105,6 +110,27 @@
                 &kp LC(PG_DN)       &mmv MOVE_LEFT     &mmv MOVE_DOWN    &mmv MOVE_RIGHT   &mwh SCROLL_DOWN          &kp EQUAL       &kp PLUS        &kp MINUS            &kp KP_MULTIPLY         &kp ENTER
                                                                          &to 0             &kp BSPC                  &kp LC(LSHFT)      &trans
                 >;
+        };
+        
+        // Layer 4
+        // create a layer for gaming purpose 
+            //should include AWSD in middle of left hand
+            //should have CTRL and SHFT
+            //should have SPACE key
+            // should have ESC key
+            // should have TAB key
+            // should have ALT key
+            //should ave R-reload
+            //should have F-melee
+            // should have M
+            //sould have Q
+            // sould have E
+            // should have Z
+            //should have X
+            //sould have C
+            // should have V
+        gaming_layer {
+
         };
     };
 
