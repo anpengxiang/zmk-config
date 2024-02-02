@@ -114,23 +114,43 @@
         
         // Layer 4
         // create a layer for gaming purpose 
-            //should include AWSD in middle of left hand
-            //should have CTRL and SHFT
-            //should have SPACE key
+            // should include AWSD in middle of left hand
+            // should have CTRL and SHFT
+            // should have SPACE key
             // should have ESC key
             // should have TAB key
             // should have ALT key
-            //should ave R-reload
-            //should have F-melee
+            // should ave R-reload
+            // should have F-melee
             // should have M
-            //sould have Q
-            // sould have E
+            // should have Q
+            // should have E
             // should have Z
-            //should have X
-            //sould have C
+            // should have X
+            // should have C
             // should have V
         gaming_layer {
+            bindings = <
+                &none     &none     &none     &none     &none          &none     &none     &none     &none     &none
+                &none     &none     &none     &none     &none          &none     &none     &none     &none     &none
+                &none     &none     &none     &none     &none          &none     &none     &none     &none     &none
+                                              &none     &none          &none     &none
+                >;
+        };
 
+        // Layer 5
+        // create a layer for system purpose 
+            // should have soft reset for left and right side
+            // should have hard reset for left and right side
+            
+
+        system_layer {
+            bindings = <
+                &none     &none     &none     &none     &none          &none     &none     &none     &none     &none
+                &none     &none     &none     &none     &none          &none     &none     &none     &none     &none
+                &none     &none     &none     &none     &none          &none     &none     &none     &none     &none
+                                              &none     &none          &none     &none
+                >;
         };
     };
 
