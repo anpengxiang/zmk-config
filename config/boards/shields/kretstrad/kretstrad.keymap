@@ -113,7 +113,7 @@
         };
         
         // Layer 4
-        // create a layer for gaming purpose 
+        // create a layer for gaming purpose
             // [done] should include AWSD in middle of left hand
             // [done] should have CTRL and SHFT
             // [done] should have SPACE key
@@ -123,7 +123,7 @@
             // [done through combo] should have ENTER key
             // [done] should ave R-reload
             // [done] should have F-melee
-            // should have M
+            // ??????? should have M
             // [done] should have Q
             // [done] should have E
             // [done] should have Z
@@ -133,27 +133,31 @@
             // [done through combo] should have MCLK
             // [done] should have mouse scroll up
             // [done] should have mouse scroll down
+            // [done through combo] create an escape back to layer 0
+            // [done through combo] create a way to enter to this layer
+
         gaming_layer {
             bindings = <
-                &kp ESC       &kp Q     &kp W     &kp E     &kp R          &mwh SCROLL_UP     &mkp LCLK     &mmv MOVE_UP     &mkp RCLK     &none
+                &kp ESC       &kp Q     &kp W     &kp E     &kp R          &mwh SCROLL_UP      &mkp LCLK         &mmv MOVE_UP       &mkp RCLK           &none
                 &kp LSHFT     &kp A     &kp S     &kp D     &kp F          &mwh SCROLL_DOWN    &mmv MOVE_LEFT    &mmv MOVE_DOWN     &mmv MOVE_RIGHT     &none
-                &kp LCTRL     &kp Z     &kp X     &kp C     &kp V          &kp LEFT     &kp DOWN     &kp UP     &kp RIGHT     &none
+                &kp LCTRL     &kp Z     &kp X     &kp C     &kp V          &kp LEFT            &kp DOWN          &kp UP             &kp RIGHT           &none
                                            &kp LALT     &kp SPACE          &none     &kp TAB
                 >;
         };
 
         // Layer 5
         // create a layer for system purpose 
-            // should have soft reset for left and right side
-            // should have hard reset for left and right side
-
+            // [done through combo] create a way to enter this layer
+            // [done through combo] create a way to exit this layer
+            // [done] should have soft reset for left and right side
+            // [done] should have hard reset for left and right side
 
         system_layer {
             bindings = <
-                &none     &none     &none     &none     &none          &none     &none     &none     &none     &none
-                &none     &none     &none     &none     &none          &none     &none     &none     &none     &none
-                &none     &none     &none     &none     &none          &none     &none     &none     &none     &none
-                                              &none     &none          &none     &none
+                &none     &none     &none     &none     &bootloader          &bootloader     &none     &none     &none     &none
+                &none     &none     &none     &none     &none                &none           &none     &none     &none     &none
+                &none     &none     &none     &none     &none                &none           &none     &none     &none     &none
+                                              &none     &sys_reset           &sys_reset      &none
                 >;
         };
     };
@@ -180,7 +184,7 @@
             key-positions = <6 8>;
             layers = <4>;
             bindings = <&mkp MCLK>;
-        }
+        };
 
         combo_scroll_left {
             timeout-ms = <50>;
@@ -202,6 +206,34 @@
             layers = <4>;
             bindings = <&kp ENTER>;
         };
+
+        combo_enter_layer4_from_layer0 {
+            timeout-ms = <50>;
+            key-positions = <0 9 10 19 20 29>;
+            layers = <0>;
+            bindings = <&tog 4>;
+        }; 
+
+        combo_return_layer0_from_layer4 {
+            timeout-ms = <50>;
+            key-positions = <0 9 10 19 20 29>;
+            layers = <4>;
+            bindings = <&to 0>;
+        }; 
+
+        combo_enter_layer5_from_layer0 {
+            timeout-ms = <50>;
+            key-positions = <0 1 2 3 6 7 8 9 31 32>;
+            layers = <0>;
+            bindings = <&tog 5>;
+        }; 
+
+        combo_return_layer_from_layer5 {
+            timeout-ms = <50>;
+            key-positions = <0 1 2 3 6 7 8 9 31 32>;
+            layers = <5>;
+            bindings = <&to 0>;
+        }; 
     };
 
     macros {
