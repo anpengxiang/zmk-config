@@ -114,27 +114,31 @@
         
         // Layer 4
         // create a layer for gaming purpose 
-            // should include AWSD in middle of left hand
-            // should have CTRL and SHFT
-            // should have SPACE key
-            // should have ESC key
-            // should have TAB key
-            // should have ALT key
-            // should ave R-reload
-            // should have F-melee
+            // [done] should include AWSD in middle of left hand
+            // [done] should have CTRL and SHFT
+            // [done] should have SPACE key
+            // [done] should have ESC key
+            // [done] should have TAB key
+            // [done] should have ALT key
+            // [done through combo] should have ENTER key
+            // [done] should ave R-reload
+            // [done] should have F-melee
             // should have M
-            // should have Q
-            // should have E
-            // should have Z
-            // should have X
-            // should have C
-            // should have V
+            // [done] should have Q
+            // [done] should have E
+            // [done] should have Z
+            // [done] should have X
+            // [done] should have C
+            // [done] should have V
+            // [done through combo] should have MCLK
+            // [done] should have mouse scroll up
+            // [done] should have mouse scroll down
         gaming_layer {
             bindings = <
-                &none     &none     &none     &none     &none          &none     &none     &none     &none     &none
-                &none     &none     &none     &none     &none          &none     &none     &none     &none     &none
-                &none     &none     &none     &none     &none          &none     &none     &none     &none     &none
-                                              &none     &none          &none     &none
+                &kp ESC       &kp Q     &kp W     &kp E     &kp R          &mwh SCROLL_UP     &mkp LCLK     &mmv MOVE_UP     &mkp RCLK     &none
+                &kp LSHFT     &kp A     &kp S     &kp D     &kp F          &mwh SCROLL_DOWN    &mmv MOVE_LEFT    &mmv MOVE_DOWN     &mmv MOVE_RIGHT     &none
+                &kp LCTRL     &kp Z     &kp X     &kp C     &kp V          &kp LEFT     &kp DOWN     &kp UP     &kp RIGHT     &none
+                                           &kp LALT     &kp SPACE          &none     &kp TAB
                 >;
         };
 
@@ -142,7 +146,7 @@
         // create a layer for system purpose 
             // should have soft reset for left and right side
             // should have hard reset for left and right side
-            
+
 
         system_layer {
             bindings = <
@@ -171,6 +175,13 @@
             bindings = <&mkp MCLK>;
         };
 
+        commbo_middle_click2 {
+            timeout-ms = <50>;
+            key-positions = <6 8>;
+            layers = <4>;
+            bindings = <&mkp MCLK>;
+        }
+
         combo_scroll_left {
             timeout-ms = <50>;
             key-positions = <10 20>;
@@ -183,6 +194,13 @@
             key-positions = <14 24>;
             layers = <3>;
             bindings = <&mwh SCROLL_RIGHT>;
+        };
+
+        combo_enter {
+            timeout-ms = <50>;
+            key-positions = <30 31>;
+            layers = <4>;
+            bindings = <&kp ENTER>;
         };
     };
 
