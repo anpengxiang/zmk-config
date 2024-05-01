@@ -29,7 +29,7 @@
 #undef SCROLL_DOWN
 #undef SCROLL_LEFT
 #undef SCROLL_RIGHT
-#define SCROLL_UP SCROLL_VERT(U_MOUSE_SCROLL_MAX)
+#define SCROLL_UP SCROLL_VERT(U_MOUSE_SCROLL_MAX)   
 #define SCROLL_DOWN SCROLL_VERT(-U_MOUSE_SCROLL_MAX)
 #define SCROLL_LEFT SCROLL_HOR(-U_MOUSE_SCROLL_MAX)
 #define SCROLL_RIGHT SCROLL_HOR(U_MOUSE_SCROLL_MAX)
@@ -103,6 +103,9 @@
         };
         
         // Layer 3
+        // left hand: add most often used key with a mouse: enter key, 
+        // right hand: computation notation very rarely used, should focus on data exploration in excel, e.g. trace precedent, dependent and remove arrow
+        // right hand: top right backspace is redundant
         one_hand_layer {
             bindings = <
                 &kp ESC             &kp LC(C)          &kp LC(V)         &kp LC(W)         &kp LC(D)                 &kp LC(C)       &kp LC(V)       &kp LC(LBKT)         &kp LC(RBKT)            &kp BSPC
@@ -206,7 +209,7 @@
             layers = <4>;
             bindings = <&kp ENTER>;
         };
-
+        // TODO: problem in limit of button to activate combo
         combo_enter_layer4_from_layer0 {
             timeout-ms = <50>;
             key-positions = <0 9 10 19 20 29>;
@@ -214,6 +217,7 @@
             bindings = <&tog 4>;
         }; 
 
+        // TODO: problem in limit of button to activate combo
         combo_return_layer0_from_layer4 {
             timeout-ms = <50>;
             key-positions = <0 9 10 19 20 29>;
@@ -221,6 +225,7 @@
             bindings = <&to 0>;
         }; 
 
+        // TODO: problem in limit of button to activate combo
         combo_enter_layer5_from_layer0 {
             timeout-ms = <50>;
             key-positions = <0 1 2 3 6 7 8 9 31 32>;
@@ -228,6 +233,7 @@
             bindings = <&tog 5>;
         }; 
 
+        // TODO: problem in limit of button to activate combo
         combo_return_layer_from_layer5 {
             timeout-ms = <50>;
             key-positions = <0 1 2 3 6 7 8 9 31 32>;
