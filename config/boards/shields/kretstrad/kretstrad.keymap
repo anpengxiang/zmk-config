@@ -141,7 +141,7 @@
 
         gaming_layer {
             bindings = <
-                &kp ESC       &kp Q     &kp W     &kp E     &kp R          &mwh SCROLL_UP      &mkp LCLK         &mmv MOVE_UP       &mkp RCLK           &none
+                &kp ESC       &kp Q     &kp W     &kp E     &kp R          &mwh SCROLL_UP      &mkp LCLK         &mmv MOVE_UP       &mkp RCLK           &mkp LCLK
                 &kp LSHFT     &kp A     &kp S     &kp D     &kp F          &mwh SCROLL_DOWN    &mmv MOVE_LEFT    &mmv MOVE_DOWN     &mmv MOVE_RIGHT     &none
                 &kp LCTRL     &kp Z     &kp X     &kp C     &kp V          &kp LEFT            &kp DOWN          &kp UP             &kp RIGHT           &none
                                            &kp LALT     &kp SPACE          &none     &kp TAB
@@ -228,7 +228,7 @@
         // TODO: problem in limit of button to activate combo
         combo_enter_layer5_from_layer0 {
             timeout-ms = <50>;
-            key-positions = <0 1 2 3 6 7 8 9 31 32>;
+            key-positions = <0 1 2 3 6 7 8 9 30 33>;
             layers = <0>;
             bindings = <&tog 5>;
         }; 
@@ -236,7 +236,7 @@
         // TODO: problem in limit of button to activate combo
         combo_return_layer_from_layer5 {
             timeout-ms = <50>;
-            key-positions = <0 1 2 3 6 7 8 9 31 32>;
+            key-positions = <0 1 2 3 6 7 8 9 30 33>;
             layers = <5>;
             bindings = <&to 0>;
         }; 
