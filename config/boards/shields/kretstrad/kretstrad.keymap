@@ -146,7 +146,7 @@
                 &none              &none     &none     &none     &bootloader          &bootloader     &none     &none     &none     &none
                 &none              &none     &none     &none     &none                &none           &none     &none     &none     &none
                 &bt_clr_reset      &none     &none     &none     &none                &none           &none     &none     &none     &bt_clr_reset
-                                              &none     &reset               &reset          &none
+                                              &none     &sys_reset               &sys_reset          &none
                 >;
         };
     };
