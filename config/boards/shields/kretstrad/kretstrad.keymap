@@ -9,37 +9,15 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/mouse.h>
 
-// adjust mouse movement speed
-
-#define U_MOUSE_MOVE_MAX 2000                     /* <--- New max speed setting (default: 600) */
-#undef MOVE_UP
-#undef MOVE_DOWN
-#undef MOVE_LEFT
-#undef MOVE_RIGHT
-#define MOVE_UP MOVE_VERT(-U_MOUSE_MOVE_MAX)
-#define MOVE_DOWN MOVE_VERT(U_MOUSE_MOVE_MAX)
-#define MOVE_LEFT MOVE_HOR(-U_MOUSE_MOVE_MAX)
-#define MOVE_RIGHT MOVE_HOR(U_MOUSE_MOVE_MAX)
-
-// adjust mouse scroll wheel speed
-
-#define U_MOUSE_SCROLL_MAX 20                    /* <--- New max speed setting (default: 10) */
-
-#undef SCROLL_UP
-#undef SCROLL_DOWN
-#undef SCROLL_LEFT
-#undef SCROLL_RIGHT
-#define SCROLL_UP SCROLL_VERT(U_MOUSE_SCROLL_MAX)   
-#define SCROLL_DOWN SCROLL_VERT(-U_MOUSE_SCROLL_MAX)
-#define SCROLL_LEFT SCROLL_HOR(-U_MOUSE_SCROLL_MAX)
-#define SCROLL_RIGHT SCROLL_HOR(U_MOUSE_SCROLL_MAX)
-
+// Enhanced mouse movement configuration for better Windows compatibility
 &mmv {
-    time-to-max-speed-ms = <400>;             /* <--- How long time until max speed is reached (default: 500) */
+    time-to-max-speed-ms = <400>;            // How long time until max speed is reached (default: 500)
+    acceleration-exponent = <1>;             // Linear acceleration
 };
     
-&mwh {
-    time-to-max-speed-ms = <500>;             /* <--- How long time until max speed is reached */
+&msc {
+    time-to-max-speed-ms = <500>;            // How long time until max speed is reached
+    acceleration-exponent = <0>;             // No acceleration for more precise scrolling
 };
 
 &mt {
@@ -55,6 +33,14 @@
                 #binding-cells = <0>;
                 tapping-term-ms = <250>;
                 bindings = <&kp LALT>, <&tog 3>;
+            };
+            
+            // Add a bluetooth clear and reconnect behavior for connection issues
+            bt_clr_reset: bt_clr_reset {
+                compatible = "zmk,behavior-macro";
+                label = "BT_CLEAR_RESET";
+                #binding-cells = <0>;
+                bindings = <&bt BT_CLR>, <&bt BT_SEL 0>;
             };
     };
 
@@ -83,7 +69,7 @@
         num_punc_layer {
             bindings = <
                 &kp N1     &kp N2     &kp N3     &kp N4          &kp N5                     &kp N6          &kp N7          &kp N8        &kp N9           &kp N0
-                &kp ESC    &kp PG_UP  &kp PG_DN  &mwh SCROLL_UP  &mwh SCROLL_DOWN           &kp LEFT        &kp DOWN        &kp UP        &kp RIGHT        &trans
+                &kp ESC    &kp PG_UP  &kp PG_DN  &msc SCRL_UP    &msc SCRL_DOWN             &kp LEFT        &kp DOWN        &kp UP        &kp RIGHT        &trans
                 &kp MINUS  &kp EQUAL  &kp SQT    &mkp LCLK       &mkp RCLK                  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &kp ENTER
                                                  &trans          &trans                     &trans          &trans
                 >;
@@ -109,8 +95,8 @@
         one_hand_layer {
             bindings = <
                 &kp ESC             &kp LC(C)          &kp LC(V)         &kp LC(W)         &kp LC(D)                 &kp LC(C)       &kp LC(V)       &kp LC(LBKT)         &kp LC(RBKT)            &kp BSPC
-                &kp LC(PG_UP)       &mkp LCLK          &mmv MOVE_UP      &mkp RCLK         &mwh SCROLL_UP            &kp LEFT        &kp DOWN        &kp UP               &kp RIGHT               &kp F2
-                &kp LC(PG_DN)       &mmv MOVE_LEFT     &mmv MOVE_DOWN    &mmv MOVE_RIGHT   &mwh SCROLL_DOWN          &kp EQUAL       &kp PLUS        &kp MINUS            &kp KP_MULTIPLY         &kp ENTER
+                &kp LC(PG_UP)       &mkp LCLK          &mmv MOVE_UP      &mkp RCLK         &msc SCRL_UP              &kp LEFT        &kp DOWN        &kp UP               &kp RIGHT               &kp F2
+                &kp LC(PG_DN)       &mmv MOVE_LEFT     &mmv MOVE_DOWN    &mmv MOVE_RIGHT   &msc SCRL_DOWN            &kp EQUAL       &kp PLUS        &kp MINUS            &kp KP_MULTIPLY         &kp ENTER
                                                                          &to 0             &kp BSPC                  &kp LC(LSHFT)      &trans
                 >;
         };
@@ -141,8 +127,8 @@
 
         gaming_layer {
             bindings = <
-                &kp ESC       &kp Q     &kp W     &kp E     &kp R          &mwh SCROLL_UP      &mkp LCLK         &mmv MOVE_UP       &mkp RCLK           &mkp LCLK
-                &kp LSHFT     &kp A     &kp S     &kp D     &kp F          &mwh SCROLL_DOWN    &mmv MOVE_LEFT    &mmv MOVE_DOWN     &mmv MOVE_RIGHT     &none
+                &kp ESC       &kp Q     &kp W     &kp E     &kp R          &msc SCRL_UP        &mkp LCLK         &mmv MOVE_UP       &mkp RCLK           &mkp LCLK
+                &kp LSHFT     &kp A     &kp S     &kp D     &kp F          &msc SCRL_DOWN      &mmv MOVE_LEFT    &mmv MOVE_DOWN     &mmv MOVE_RIGHT     &none
                 &kp LCTRL     &kp Z     &kp X     &kp C     &kp V          &kp LEFT            &kp DOWN          &kp UP             &kp RIGHT           &none
                                            &kp LALT     &kp SPACE          &none     &kp TAB
                 >;
@@ -157,9 +143,9 @@
 
         system_layer {
             bindings = <
-                &none     &none     &none     &none     &bootloader          &bootloader     &none     &none     &none     &none
-                &none     &none     &none     &none     &none                &none           &none     &none     &none     &none
-                &none     &none     &none     &none     &none                &none           &none     &none     &none     &none
+                &none              &none     &none     &none     &bootloader          &bootloader     &none     &none     &none     &none
+                &none              &none     &none     &none     &none                &none           &none     &none     &none     &none
+                &bt_clr_reset      &none     &none     &none     &none                &none           &none     &none     &none     &bt_clr_reset
                                               &none     &reset               &reset          &none
                 >;
         };
@@ -193,14 +179,14 @@
             timeout-ms = <50>;
             key-positions = <10 20>;
             layers = <3>;
-            bindings = <&mwh SCROLL_LEFT>;
+            bindings = <&msc SCRL_LEFT>;
         };
 
         combo_scroll_right {
             timeout-ms = <50>;
             key-positions = <14 24>;
             layers = <3>;
-            bindings = <&mwh SCROLL_RIGHT>;
+            bindings = <&msc SCRL_RIGHT>;
         };
 
         combo_enter {
@@ -217,7 +203,6 @@
             bindings = <&tog 4>;
         }; 
 
-        // TODO: problem in limit of button to activate combo
         combo_return_layer0_from_layer4 {
             timeout-ms = <50>;
             key-positions = <0 9 10 19 20 29>;
@@ -225,7 +210,6 @@
             bindings = <&to 0>;
         }; 
 
-        // TODO: problem in limit of button to activate combo
         combo_enter_layer5_from_layer0 {
             timeout-ms = <50>;
             key-positions = <0 1 2 3 6 7 8 9 30 33>;
@@ -233,12 +217,19 @@
             bindings = <&tog 5>;
         }; 
 
-        // TODO: problem in limit of button to activate combo
         combo_return_layer_from_layer5 {
             timeout-ms = <50>;
             key-positions = <0 1 2 3 6 7 8 9 30 33>;
             layers = <5>;
             bindings = <&to 0>;
+        }; 
+        
+        // Add a combo to quickly clear BT connections and reconnect when issues arise
+        combo_bt_reset {
+            timeout-ms = <50>;
+            key-positions = <25 29>;  // Bottom right corner keys
+            layers = <0>;
+            bindings = <&bt_clr_reset>;
         }; 
     };
 
@@ -290,6 +281,36 @@
             wait-ms = <30>;
             tap-ms = <40>;
             bindings = <&kp LALT &kp H &kp N9>;
+        };
+        
+        // EXCEL: trace precedent (new macro)
+        trace_precedent: trace_precedent {
+            label = "ZM_trace_precedent";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <40>;
+            bindings = <&kp LALT &kp T &kp U &kp P>;
+        };
+        
+        // Excel: trace dependent (new macro)
+        trace_dependent: trace_dependent {
+            label = "ZM_trace_dependent";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <40>;
+            bindings = <&kp LALT &kp T &kp U &kp D>;
+        };
+        
+        // Excel: remove arrows (new macro)
+        remove_arrows: remove_arrows {
+            label = "ZM_remove_arrows";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <40>;
+            bindings = <&kp LALT &kp T &kp U &kp A &kp A>;
         };
     };
 }; 
